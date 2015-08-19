@@ -41,4 +41,18 @@ public class Consulta extends Conexion{
         }
     }
     
+    public ResultSet hacerConsulta(String consulta){
+        try {
+            getStmt();
+            resultados = stmt.executeQuery(consulta);
+            if (resultados != null) {
+                return resultados;
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("Error consulta");
+            return null;
+        }
+    }
+    
 }

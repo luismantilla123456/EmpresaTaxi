@@ -5,6 +5,7 @@
     <class>Modelo.Reclamo</class>
     <class>Modelo.Usuario_1</class>
     <class>Modelo.Reservacion</class>
+    <class>Usuarios.UsuarioH</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/taxi?zeroDateTimeBehavior=convertToNull"/>

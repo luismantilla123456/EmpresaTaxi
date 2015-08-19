@@ -23,7 +23,34 @@
     <!-- Favicons -->
     <link href="images/favicon/favicon.png" rel="shortcut icon">
     <script src="js/modernizr-2.7.1.min.js"></script>
-	
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+
+            $('#btnreserva').click(function (e){
+                alert("mensaje");
+            });
+            $('#comboDNI').load('consultaDNI');
+            $('#comboDNI').change(function (){
+                var posicion=document.getElementById("comboDNI").options.selectedIndex; //posicion
+                //alert(document.getElementById("comboDNI").options[posicion].text);
+                var dniper = document.getElementById("comboDNI").options[posicion].text;
+                //alert(dniper);
+                //e.preventDefault();
+                $.ajax({
+                    data:{"dni" : dniper},
+                    url:'consultaUsuario',
+                    type:'POST',
+                    success: function (resultado){
+                        //alert("mensaje"+resultado);
+                        $('#nombrePersona').val(resultado);
+                    }
+                });
+            });
+            
+        });
+    </script>
+    
   </head>
   <body class="index" id="to-top">
 
@@ -149,11 +176,13 @@
         <form action="" method="post" class="form-light mt-20" role="form">
                 <div class="form-group">
                     <label>nombre</label>
-                    <input type="text" name="nombre" class="form-control" placeholder="Name">
+                    <input type="text" id="nombrePersona" class="form-control" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label>DNI</label>
-                    <input type="text" name="dni" class="form-control" placeholder="DNI">
+                    <select id="comboDNI">
+                        
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Fecha</label>
@@ -167,7 +196,7 @@
                         <label>Detalle</label>
                         <textarea class="form-control" name="mensaje" id="message" placeholder="Write you message here..." style="height:100px;"></textarea>
                 </div>
-                <button type="submit" class="btn btn-two">Reservar</button><p><br></p>
+            <button id="btnreserva" type="submit" class="btn btn-two">Reservar</button><p><br></p>
             </form>
     </div>
 </section>
@@ -216,5 +245,7 @@
     <script src="js/jquery-2.1.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/customScripts.js"></script>
+    <script type="text/javascript"> 
+    </script>
   </body>
 </html>

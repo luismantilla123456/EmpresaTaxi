@@ -36,7 +36,6 @@ public class AdminDB extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String email = request.getParameter("email");
         String pass = request.getParameter("pass");
         Modelo.Usuario_1 usuario = new Usuario_1();
